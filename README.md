@@ -1,1 +1,2 @@
-# leetcode
+# LeetCode
+The code for LeetCode
