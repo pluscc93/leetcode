@@ -1,6 +1,4 @@
-package main
-
-import "fmt"
+package leetcode
 
 //func maxArea(height []int) int {
 //	if len(height) < 2 {
@@ -21,33 +19,28 @@ import "fmt"
 //				sum = tmpSum
 //				tmpHi = h
 //			}
-//		}	
+//		}
 //	}
 //	return sum
 //}
 
 func maxArea(height []int) int {
 	sum := 0
-	lo,hi := 0,len(height)-1
+	lo, hi := 0, len(height)-1
 	for lo < hi {
 		h := height[lo]
 		if h > height[hi] {
-			h = height[hi] 
+			h = height[hi]
 		}
-		tmp := (hi-lo)*h
+		tmp := (hi - lo) * h
 		if tmp > sum {
 			sum = tmp
 		}
 		if height[lo] > height[hi] {
 			hi--
-		}else {
+		} else {
 			lo++
 		}
 	}
 	return sum
-}
-
-func main() {
-	height := [] int {1,8,6,2,5,4,8,3,7}
-	fmt.Println(maxArea(height))
 }
