@@ -23,6 +23,12 @@ func removeNthFromEnd(head *ListNode, n int) *ListNode {
 }
 
 func main() {
+	var nums []int
+	for _, i := range nums {
+		fmt.Println(i)
+	}
+	tmp := nums[0]
+	fmt.Println(len(nums))
+	fmt.Println(tmp)
 
-	fmt.Println("vim-go")
 }
