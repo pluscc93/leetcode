@@ -18,5 +18,4 @@ func Test_mergeTwoList(t *testing.T) {
 	if r2 != nil {
 		t.Fatalf("%+v", r2)
 	}
-
 }
