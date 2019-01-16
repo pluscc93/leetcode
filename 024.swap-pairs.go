@@ -4,16 +4,16 @@ func swapPairs(head *ListNode) *ListNode {
 	if head == nil {
 		return head
 	}
-
-	f, s := head, head.Next
-
-	for s != nil {
-		f.Val, s.Val = s.Val, f.Val
-		f = s.Next
-		if f == nil {
-			break
-		}
-		s = f.Next
+	tmp := head
+	list := &ListNode{}
+	list.Next = head
+	head = list
+	for head.Next != nil && head.Next.Next != nil {
+		tmp = head.Next
+		head.Next = tmp.Next
+		tmp.Next = head.Next.Next
+		head.Next.Next = tmp
+		head = head.Next.Next
 	}
-	return head
+	return list.Next
 }
