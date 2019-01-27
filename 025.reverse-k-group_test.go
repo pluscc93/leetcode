@@ -33,11 +33,13 @@ func Test_reverseKGroup(t *testing.T) {
 		},
 	}
 
-	for i, tc := range tests {
-		got := reverseKGroup(tc.lists, tc.k)
-		if diff := cmp.Diff(tc.want, got); diff != "" {
-			t.Errorf("diff %d: (-want +got)\n%s", i, diff)
-		}
+	for _, tc := range tests {
+		t.Run("", func(t *testing.T) {
+			got := reverseKGroup(tc.lists, tc.k)
+			if diff := cmp.Diff(tc.want, got); diff != "" {
+				t.Errorf("diff: (-want +got)\n%s", diff)
+			}
+		})
 	}
 }
 
@@ -52,10 +54,12 @@ func Test_revert(t *testing.T) {
 		},
 	}
 
-	for i, tc := range tests {
-		got := revert(tc.lists)
-		if diff := cmp.Diff(tc.want, got); diff != "" {
-			t.Errorf("diff %d: (-want +got)\n%s", i, diff)
-		}
+	for _, tc := range tests {
+		t.Run("", func(t *testing.T) {
+			got := revert(tc.lists)
+			if diff := cmp.Diff(tc.want, got); diff != "" {
+				t.Errorf("diff: (-want +got)\n%s", diff)
+			}
+		})
 	}
 }

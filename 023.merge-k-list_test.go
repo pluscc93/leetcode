@@ -25,9 +25,11 @@ func Test_mergeKLists(t *testing.T) {
 	}
 
 	for _, tc := range tests {
-		got := mergeKLists(tc.lists)
-		if diff := cmp.Diff(tc.want, got); diff != "" {
-			t.Errorf("diff: (-want +got)\n%s", diff)
-		}
+		t.Run("", func(t *testing.T) {
+			got := mergeKLists(tc.lists)
+			if diff := cmp.Diff(tc.want, got); diff != "" {
+				t.Errorf("diff: (-want +got)\n%s", diff)
+			}
+		})
 	}
 }

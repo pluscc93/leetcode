@@ -1,27 +1,43 @@
 package leetcode
 
-import "testing"
+import (
+	"github.com/google/go-cmp/cmp"
+	"testing"
+)
 
 func Test_lengthOfLongestSubstring(t *testing.T) {
-	var r int
-	r = lengthOfLongestSubstring("abcabcbb")
-	if r != 3 {
-		t.Fatal(r)
+	tests := []struct {
+		s    string
+		want int
+	}{
+		{
+			s:    "abcabcbb",
+			want: 3,
+		},
+		{
+			s:    "bbbbb",
+			want: 1,
+		},
+		{
+			s:    "pwwkew",
+			want: 3,
+		},
+		{
+			s:    "p",
+			want: 1,
+		},
+		{
+			s:    "abba",
+			want: 2,
+		},
 	}
-	r = lengthOfLongestSubstring("bbbbb")
-	if r != 1 {
-		t.Fatal(r)
-	}
-	r = lengthOfLongestSubstring("pwwkew")
-	if r != 3 {
-		t.Fatal(r)
-	}
-	r = lengthOfLongestSubstring("p")
-	if r != 1 {
-		t.Fatal(r)
-	}
-	r = lengthOfLongestSubstring("abba")
-	if r != 2 {
-		t.Fatal(r)
+
+	for _, tc := range tests {
+		t.Run("", func(t *testing.T) {
+			got := lengthOfLongestSubstring(tc.s)
+			if diff := cmp.Diff(tc.want, got); diff != "" {
+				t.Errorf("diff: (-want +got)\n%s", diff)
+			}
+		})
 	}
 }
