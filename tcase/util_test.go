@@ -26,3 +26,27 @@ func TestReg(t *testing.T) {
 		}
 	}
 }
+
+func TestMap(t *testing.T) {
+	tests := []struct {
+		key  string
+		ss   []string
+		want string
+	}{
+		{
+			key:  "test",
+			ss:   []string{"aa", "bb", "cc", "dd"},
+			want: "bb",
+		},
+	}
+	m := make(map[string]string)
+	for _, tc := range tests {
+		for _, v := range tc.ss {
+			m[tc.key] = v
+		}
+		got := m[tc.key]
+		if diff := cmp.Diff(tc.want, got); diff != "" {
+			t.Errorf("diff: (-want +got)\n%s", diff)
+		}
+	}
+}
